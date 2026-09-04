@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>infectuz — Кибербезопасность и исследования</title>
+
+    <meta
+        name="description"
+        content="infectuz — исследования в области кибербезопасности, ИИ, OSINT и технологий."
+    >
+
+    <meta name="theme-color" content="#07090B">
+
+    <style>
+
+        /* =====================================================
+           INFECTUZ
+           Cybersecurity · Research · Technology
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            /* Background */
+
+            --bg: #07090B;
+            --surface: #0D1114;
+            --surface-hover: #11171B;
+
+            /* Borders */
+
+            --border: #20282D;
+            --border-hover: #35434A;
+
+            /* Typography */
+
+            --text: #F1F5F5;
+            --muted: #8A969B;
+
+            /* INFECTUZ BRAND */
+
+            --accent: #35D6D0;
+            --accent-hover: #55E4DE;
+            --accent-soft: rgba(53, 214, 208, 0.10);
+            --accent-border: rgba(53, 214, 208, 0.35);
+
+            /* Layout */
+
+            --max-width: 1180px;
+
+        }
+
+
+        /* =====================================================
+           BASE
+        ===================================================== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
+
+            -webkit-font-smoothing: antialiased;
+
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        ::selection {
+
+            background: var(--accent);
+
+            color: #031010;
+
+        }
+
+
+        .container {
+
+            width:
+                min(
+                    calc(100% - 40px),
+                    var(--max-width)
+                );
+
+            margin: 0 auto;
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 100;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            background:
+                rgba(7,9,11,0.72);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+        }
+
+
+        .nav-inner {
+
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .logo {
+
+            font-size: 17px;
+
+            font-weight: 650;
+
+            letter-spacing: -0.035em;
+
+        }
+
+
+        .logo span {
+
+            color: var(--accent);
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 30px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+        }
+
+
+        .nav-links a {
+
+            transition:
+                color .25s ease;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--accent);
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 92vh;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            padding-top: 72px;
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            left: 50%;
+            top: 38%;
+
+            transform:
+                translate(-50%, -50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--accent-soft),
+                    transparent 66%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .hero-content {
+
+            max-width: 920px;
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+        .eyebrow {
+
+            color: var(--accent);
+
+            font-size: 13px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            margin-bottom: 26px;
+
+        }
+
+
+        h1 {
+
+            font-size:
+                clamp(
+                    54px,
+                    8vw,
+                    104px
+                );
+
+            line-height: .94;
+
+            letter-spacing: -.065em;
+
+            font-weight: 650;
+
+            max-width: 920px;
+
+        }
+
+
+        .hero-description {
+
+            max-width: 650px;
+
+            color: var(--muted);
+
+            font-size: 19px;
+
+            margin-top: 34px;
+
+        }
+
+
+        .buttons {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 38px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .button {
+
+            border:
+                1px solid
+                var(--border);
+
+            padding:
+                12px 18px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            transition:
+                background .25s ease,
+                border-color .25s ease,
+                color .25s ease,
+                transform .25s ease;
+
+        }
+
+
+        .button:hover {
+
+            background:
+                var(--surface-hover);
+
+            border-color:
+                var(--border-hover);
+
+            color:
+                var(--accent);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .button.primary {
+
+            background:
+                var(--accent);
+
+            color:
+                #031010;
+
+            border-color:
+                var(--accent);
+
+            font-weight: 600;
+
+        }
+
+
+        .button.primary:hover {
+
+            background:
+                var(--accent-hover);
+
+            color:
+                #031010;
+
+        }
+
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        section {
+
+            padding:
+                120px 0;
+
+            border-top:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .section-header {
+
+            display: grid;
+
+            grid-template-columns:
+                160px 1fr;
+
+            gap: 40px;
+
+            margin-bottom: 65px;
+
+        }
+
+
+        .section-number {
+
+            color:
+                var(--accent);
+
+            font-size: 13px;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .section-title {
+
+            font-size:
+                clamp(
+                    32px,
+                    5vw,
+                    54px
+                );
+
+            line-height: 1.05;
+
+            letter-spacing: -.045em;
+
+        }
+
+
+        .section-description {
+
+            color:
+                var(--muted);
+
+            max-width: 650px;
+
+            margin-top: 20px;
+
+            font-size: 17px;
+
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        #about {
+
+            position: relative;
+
+        }
+
+
+        #about::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: 5%;
+            top: 20%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(53,214,208,.045),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        /* =====================================================
+           FOCUS
+        ===================================================== */
+
+        .focus-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-top:
+                1px solid
+                var(--border);
+
+            border-left:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .focus-item {
+
+            min-height: 210px;
+
+            padding: 28px;
+
+            border-right:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            transition:
+                background .3s ease,
+                transform .3s ease,
+                border-color .3s ease;
+
+        }
+
+
+        .focus-item:hover {
+
+            background:
+                var(--surface);
+
+            border-color:
+                var(--border-hover);
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        .focus-number {
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+        }
+
+
+        .focus-item h3 {
+
+            margin-top: 55px;
+
+            font-size: 20px;
+
+            font-weight: 500;
+
+        }
+
+
+        .focus-item p {
+
+            color:
+                var(--muted);
+
+            font-size: 14px;
+
+            margin-top: 8px;
+
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects {
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        .project {
+
+            display: grid;
+
+            grid-template-columns:
+                100px 1fr auto;
+
+            gap: 30px;
+
+            align-items: center;
+
+            padding: 30px 0;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            transition:
+                padding .3s ease,
+                background .3s ease;
+
+        }
+
+
+        .project:last-child {
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .project:hover {
+
+            padding-left: 12px;
+
+            padding-right: 12px;
+
+            background:
+                var(--surface);
+
+        }
+
+
+        .project-number {
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .project h3 {
+
+            font-size: 22px;
+
+            font-weight: 500;
+
+            transition:
+                color .25s ease;
+
+        }
+
+
+        .project p {
+
+            color:
+                var(--muted);
+
+            font-size: 14px;
+
+            margin-top: 4px;
+
+            max-width: 700px;
+
+        }
+
+
+        .project-status {
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+            border:
+                1px solid
+                var(--border);
+
+            padding:
+                5px 9px;
+
+            border-radius:
+                100px;
+
+            white-space:
+                nowrap;
+
+            transition:
+                color .25s ease,
+                border-color .25s ease;
+
+        }
+
+
+        .project:hover h3 {
+
+            color:
+                var(--accent);
+
+        }
+
+
+        .project:hover .project-status {
+
+            color:
+                var(--accent);
+
+            border-color:
+                var(--accent-border);
+
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact {
+
+            min-height: 60vh;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .contact-content {
+
+            max-width: 850px;
+
+        }
+
+
+        .contact h2 {
+
+            font-size:
+                clamp(
+                    44px,
+                    7vw,
+                    82px
+                );
+
+            line-height: .98;
+
+            letter-spacing: -.06em;
+
+        }
+
+
+        .contact p {
+
+            color:
+                var(--muted);
+
+            margin-top: 24px;
+
+            font-size: 17px;
+
+            max-width: 560px;
+
+        }
+
+
+        .contact-links {
+
+            display: flex;
+
+            gap: 24px;
+
+            margin-top: 36px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .contact-links a {
+
+            color:
+                var(--muted);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            padding-bottom: 4px;
+
+            transition:
+                color .2s ease,
+                border-color .2s ease;
+
+        }
+
+
+        .contact-links a:hover {
+
+            color:
+                var(--accent);
+
+            border-color:
+                var(--accent);
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            border-top:
+                1px solid
+                var(--border);
+
+            padding:
+                28px 0;
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .footer-inner {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .footer-brand {
+
+            color:
+                var(--text);
+
+        }
+
+
+        .footer-brand span {
+
+            color:
+                var(--accent);
+
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ===================================================== */
+
+        .fade {
+
+            opacity: 0;
+
+            transform:
+                translateY(20px);
+
+            animation:
+                appear .8s ease forwards;
+
+        }
+
+
+        .delay-1 {
+
+            animation-delay:
+                .12s;
+
+        }
+
+
+        .delay-2 {
+
+            animation-delay:
+                .24s;
+
+        }
+
+
+        .delay-3 {
+
+            animation-delay:
+                .36s;
+
+        }
+
+
+        @keyframes appear {
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+
+            .hero {
+
+                min-height:
+                    82vh;
+
+            }
+
+
+            h1 {
+
+                font-size:
+                    58px;
+
+            }
+
+
+            .hero-description {
+
+                font-size:
+                    17px;
+
+            }
+
+
+            section {
+
+                padding:
+                    85px 0;
+
+            }
+
+
+            .section-header {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    14px;
+
+                margin-bottom:
+                    45px;
+
+            }
+
+
+            .focus-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .project {
+
+                grid-template-columns:
+                    45px 1fr;
+
+            }
+
+
+            .project-status {
+
+                display:
+                    none;
+
+            }
+
+
+            .footer-inner {
+
+                flex-direction:
+                    column;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .container {
+
+                width:
+                    min(
+                        calc(100% - 28px),
+                        var(--max-width)
+                    );
+
+            }
+
+
+            h1 {
+
+                font-size:
+                    50px;
+
+            }
+
+
+            .focus-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .hero-description {
+
+                font-size:
+                    16px;
+
+            }
+
+
+            .section-description {
+
+                font-size:
+                    16px;
+
+            }
+
+
+            .contact h2 {
+
+                font-size:
+                    48px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+
+                scroll-behavior:
+                    auto;
+
+            }
+
+
+            .fade {
+
+                opacity:
+                    1;
+
+                transform:
+                    none;
+
+                animation:
+                    none;
+
+            }
+
+
+            * {
+
+                transition:
+                    none !important;
+
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <nav>
+
+        <div class="container nav-inner">
+
+            <a href="#" class="logo">
+                infect<span>uz</span>
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="#about">
+                    О нас
+                </a>
+
+                <a href="#focus">
+                    Направления
+                </a>
+
+                <a href="#projects">
+                    Проекты
+                </a>
+
+                <a href="#contact">
+                    Связь
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================= -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+
+                    <div class="eyebrow fade">
+
+                        Кибербезопасность · Исследования · Технологии
+
+                    </div>
+
+
+                    <h1 class="fade delay-1">
+
+                        Строим системы.<br>
+                        Проверяем предположения.
+
+                    </h1>
+
+
+                    <p class="hero-description fade delay-2">
+
+                        Исследования, эксперименты и инструменты
+                        в области кибербезопасности, ИИ и анализа
+                        информации.
+
+                    </p>
+
+
+                    <div class="buttons fade delay-3">
+
+
+                        <a
+                            class="button primary"
+                            href="#projects"
+                        >
+                            Смотреть проекты
+                        </a>
+
+
+                        <a
+                            class="button"
+                            href="https://github.com/infectuz-official"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub ↗
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================= -->
+
+        <section id="about">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+
+                    <div class="section-number">
+
+                        01 / О НАС
+
+                    </div>
+
+
+                    <div>
+
+
+                        <h2 class="section-title">
+
+                            Любопытство — это инструмент.
+
+                        </h2>
+
+
+                        <p class="section-description">
+
+                            infectuz — пространство для исследований,
+                            экспериментов, проектов и идей в области
+                            технологий и кибербезопасности.
+
+                            <br><br>
+
+                            Цель проста: глубже понимать системы,
+                            чтобы создавать более эффективные решения.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOCUS
+        ================================================= -->
+
+        <section id="focus">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+
+                    <div class="section-number">
+
+                        02 / НАПРАВЛЕНИЯ
+
+                    </div>
+
+
+                    <div>
+
+
+                        <h2 class="section-title">
+
+                            Области исследования.
+
+                        </h2>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="focus-grid">
+
+
+                    <div class="focus-item">
+
+                        <div class="focus-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Кибербезопасность
+                        </h3>
+
+                        <p>
+                            Offensive и defensive security,
+                            анализ угроз и защита систем.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="focus-item">
+
+                        <div class="focus-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Искусственный интеллект
+                        </h3>
+
+                        <p>
+                            ИИ, автоматизация и экспериментальные
+                            интеллектуальные системы.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="focus-item">
+
+                        <div class="focus-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Аналитика
+                        </h3>
+
+                        <p>
+                            OSINT, расследования и анализ
+                            открытой информации.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="focus-item">
+
+                        <div class="focus-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Инженерия
+                        </h3>
+
+                        <p>
+                            Инструменты, системы и экспериментальная
+                            инфраструктура.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROJECTS
+        ================================================= -->
+
+        <section id="projects">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+
+                    <div class="section-number">
+
+                        03 / ПРОЕКТЫ
+
+                    </div>
+
+
+                    <div>
+
+
+                        <h2 class="section-title">
+
+                            То, что создаётся.
+
+                        </h2>
+
+
+                        <p class="section-description">
+
+                            Проекты и инициативы, которые развиваются
+                            вокруг кибербезопасности, исследований
+                            и практического обмена знаниями.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="projects">
+
+
+                    <!-- EXINET -->
+
+                    <a
+                        class="project"
+                        href="https://t.me/Exinet_chat"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="project-number">
+                            01
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Exinet
+                            </h3>
+
+                            <p>
+
+                                Сообщество для изучения
+                                кибербезопасности, обмена знаниями
+                                и совместной работы над практическими
+                                проектами.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="project-status">
+
+                            Сообщество ↗
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- ANTISCAM -->
+
+                    <a
+                        class="project"
+                        href="https://t.me/Antiscamuzofficial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="project-number">
+                            02
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                AntiScam
+                            </h3>
+
+                            <p>
+
+                                Исследовательское направление,
+                                посвящённое мошенничеству,
+                                фишингу и связанным угрозам.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="project-status">
+
+                            Исследование ↗
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- ANTIBREACH -->
+
+                    <a
+                        class="project"
+                        href="https://t.me/Antibreach"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="project-number">
+                            03
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                AntiBreach
+                            </h3>
+
+                            <p>
+
+                                Исследовательское направление,
+                                посвящённое утечкам данных
+                                и цифровым рискам.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="project-status">
+
+                            В планах ↗
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================= -->
+
+        <section
+            id="contact"
+            class="contact"
+        >
+
+            <div class="container">
+
+
+                <div class="contact-content">
+
+
+                    <div class="section-number">
+
+                        04 / СВЯЗЬ
+
+                    </div>
+
+
+                    <h2>
+
+                        Остаёмся<br>
+                        на связи.
+
+                    </h2>
+
+
+                    <p>
+
+                        Исследования, кибербезопасность,
+                        технические проекты и обмен знаниями.
+
+                    </p>
+
+
+                    <div class="contact-links">
+
+
+                        <a
+                            href="https://github.com/infectuz-official"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub ↗
+                        </a>
+
+
+                        <a
+                            href="https://instagram.com/infect.uz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Instagram ↗
+                        </a>
+
+
+                        <a
+                            href="https://t.me/Cyberpoligon"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Telegram ↗
+                        </a>
+
+
+                        <a
+                            href="mailto:cvantflix@gmail.com"
+                        >
+                            Email ↗
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+
+            <div class="footer-brand">
+
+                © 2026
+                infect<span>uz</span>
+
+            </div>
+
+
+            <div>
+
+                infect.uz
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
